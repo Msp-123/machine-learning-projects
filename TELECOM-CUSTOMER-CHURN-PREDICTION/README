@@ -1,0 +1,33 @@
+**What is Customer Churn**
+- Customer churn is defined as when customers or subscribers discontinue doing business with a firm or service.
+- The telecommunications business has an annual churn rate of 15-25 percent in this highly competitive market.
+- Customer churn is a critical metric because it is much less expensive to retain existing customers than it is to acquire new customers.
+- To detect early signs of potential churn, one must first develop a holistic view of the customers and their interactions across numerous channels, including store/branch visits, product purchase histories, customer service calls, 
+Web-based transactions, and social media interactions, to mention a few.
+
+**Objectives**
+I will explore the data and try to answer some questions like:
+
+- What's the % of Churn Customers and customers that keep in with the active services?
+- Is there any patterns in Churn Customers based on the gender?
+- Is there any patterns/preference in Churn Customers based on the type of service provided?
+- What's the most profitable service types?
+- Which features and services are most profitable?
+
+**Content**
+1. Loading Libraries and Data
+2. Understanding the Data
+3. Checking Missing Values
+4. Data Manipulation
+5. Data Visualization
+6.  Data Preprocessing
+7. Machine Learning Model Evaluations and Predictions
+  - KNN
+  - SVC
+  - Ramdom Forest
+  - Logistic Regression
+  - Decision Tree Classifier
+  - AdaBoost Classifier
+  - Gradient Boosting Classifier
+8. Model Selection with VotingClassifier
+
