@@ -516,8 +516,21 @@ Interpretation:
 - This is expected in imbalanced fraud detection problems.
 - Threshold tuning is needed to manage the trade-off between recall and investigation workload.
 
----
+## Model Evaluation Visuals
 
+### Confusion Matrix
+
+![Confusion Matrix](assets/images/confusion_matrix.png)
+
+### ROC Curve
+
+![ROC Curve](assets/images/roc_curve.png)
+
+### Precision-Recall Curve
+
+![Precision-Recall Curve](assets/images/precision_recall_curve.png)
+
+---
 ### Step 7: Threshold Tuning
 
 ```powershell
@@ -598,7 +611,18 @@ Threshold 0.55 reduces false positives by 119 cases compared to threshold 0.50,
 while missing 9 additional fraud cases.
 ```
 
+## Threshold Tuning Visuals
+
+### Precision, Recall and F1-score by Threshold
+
+![Threshold Precision Recall F1](assets/images/threshold_precision_recall_f1.png)
+
+### Error Counts by Threshold
+
+![Threshold Error Counts](assets/images/threshold_error_counts.png)
+
 ---
+
 
 ### Step 8: SHAP Explainability
 
@@ -653,7 +677,15 @@ The API supports local explanation through:
 ```text
 POST /predict-explain
 ```
+## SHAP Explainability Visuals
 
+### SHAP Feature Importance
+
+![SHAP Feature Importance](assets/images/shap_feature_importance_bar.png)
+
+### SHAP Summary Plot
+
+![SHAP Summary](assets/images/shap_summary.png)
 ---
 
 ## 9. FastAPI Service
