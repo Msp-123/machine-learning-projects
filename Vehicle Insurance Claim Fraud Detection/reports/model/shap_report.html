@@ -1,0 +1,326 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vehicle Insurance Fraud Detection - SHAP Report</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                background-color: #f5f6f8;
+                color: #222;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 36px;
+            }
+
+            h1, h2, h3 {
+                color: #111827;
+            }
+
+            .section {
+                background: white;
+                padding: 24px;
+                border-radius: 14px;
+                margin-bottom: 28px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: auto;
+            }
+
+            .table-wrapper {
+                overflow-x: auto;
+            }
+
+            .styled-table {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 13px;
+                margin-top: 12px;
+            }
+
+            .styled-table th, .styled-table td {
+                border: 1px solid #ddd;
+                padding: 9px;
+                text-align: left;
+            }
+
+            .styled-table th {
+                background-color: #f3f4f6;
+                font-weight: bold;
+            }
+
+            .note {
+                background-color: #fff7ed;
+                border-left: 5px solid #f97316;
+                padding: 14px;
+                margin-top: 16px;
+                border-radius: 8px;
+            }
+
+            code {
+                background: #f3f4f6;
+                padding: 2px 6px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <h1>Vehicle Insurance Claim Fraud Detection - SHAP Explainability Report</h1>
+
+            <div class="section">
+                <h2>1. What is this report?</h2>
+                <p>
+                    This report explains the global behavior of the XGBoost fraud detection model using SHAP.
+                    SHAP values show how much each feature contributes to increasing or decreasing the model output.
+                </p>
+
+                <div class="note">
+                    SHAP explanations are especially useful in fraud detection because business users need to understand
+                    why a claim is considered risky, not only whether it is classified as fraud.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. SHAP Summary Plot</h2>
+                <img src="shap_summary.png" />
+            </div>
+
+            <div class="section">
+                <h2>3. Top SHAP Feature Importance</h2>
+                <img src="shap_feature_importance_bar.png" />
+            </div>
+
+            <div class="section">
+                <h2>4. Feature Importance Table</h2>
+                <div class="table-wrapper">
+                    <table border="1" class="dataframe styled-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>feature</th>
+      <th>mean_abs_shap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>is_policy_holder_fault</td>
+      <td>1.013009</td>
+    </tr>
+    <tr>
+      <td>is_liability_policy</td>
+      <td>0.851642</td>
+    </tr>
+    <tr>
+      <td>is_third_party_fault</td>
+      <td>0.208708</td>
+    </tr>
+    <tr>
+      <td>AddressChange_Claim_2 to 3 years</td>
+      <td>0.141821</td>
+    </tr>
+    <tr>
+      <td>RepNumber</td>
+      <td>0.141757</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>0.136904</td>
+    </tr>
+    <tr>
+      <td>Year</td>
+      <td>0.120928</td>
+    </tr>
+    <tr>
+      <td>PolicyType_Sedan - Collision</td>
+      <td>0.114077</td>
+    </tr>
+    <tr>
+      <td>BasePolicy_Liability</td>
+      <td>0.110290</td>
+    </tr>
+    <tr>
+      <td>Deductible</td>
+      <td>0.073677</td>
+    </tr>
+    <tr>
+      <td>MonthClaimed_Nov</td>
+      <td>0.064020</td>
+    </tr>
+    <tr>
+      <td>Fault_Policy Holder</td>
+      <td>0.063676</td>
+    </tr>
+    <tr>
+      <td>VehiclePrice_20000 to 29000</td>
+      <td>0.062192</td>
+    </tr>
+    <tr>
+      <td>DayOfWeekClaimed_Monday</td>
+      <td>0.061338</td>
+    </tr>
+    <tr>
+      <td>WeekOfMonth</td>
+      <td>0.056621</td>
+    </tr>
+    <tr>
+      <td>Month_Jul</td>
+      <td>0.056178</td>
+    </tr>
+    <tr>
+      <td>DriverRating</td>
+      <td>0.056013</td>
+    </tr>
+    <tr>
+      <td>WeekOfMonthClaimed</td>
+      <td>0.050094</td>
+    </tr>
+    <tr>
+      <td>Month_Dec</td>
+      <td>0.048526</td>
+    </tr>
+    <tr>
+      <td>DayOfWeek_Wednesday</td>
+      <td>0.044436</td>
+    </tr>
+    <tr>
+      <td>Make_VW</td>
+      <td>0.043190</td>
+    </tr>
+    <tr>
+      <td>is_male</td>
+      <td>0.041151</td>
+    </tr>
+    <tr>
+      <td>PolicyType_Sedan - All Perils</td>
+      <td>0.038079</td>
+    </tr>
+    <tr>
+      <td>is_old_vehicle</td>
+      <td>0.036314</td>
+    </tr>
+    <tr>
+      <td>Make_Toyota</td>
+      <td>0.036015</td>
+    </tr>
+    <tr>
+      <td>NumberOfSuppliments_more than 5</td>
+      <td>0.035927</td>
+    </tr>
+    <tr>
+      <td>NumberOfSuppliments_3 to 5</td>
+      <td>0.034651</td>
+    </tr>
+    <tr>
+      <td>NumberOfSuppliments_none</td>
+      <td>0.034617</td>
+    </tr>
+    <tr>
+      <td>Month_Mar</td>
+      <td>0.032417</td>
+    </tr>
+    <tr>
+      <td>Month_Nov</td>
+      <td>0.031970</td>
+    </tr>
+    <tr>
+      <td>Make_Pontiac</td>
+      <td>0.031748</td>
+    </tr>
+    <tr>
+      <td>DayOfWeekClaimed_Thursday</td>
+      <td>0.031651</td>
+    </tr>
+    <tr>
+      <td>AgeOfVehicle_more than 7</td>
+      <td>0.030832</td>
+    </tr>
+    <tr>
+      <td>Make_Mazda</td>
+      <td>0.027832</td>
+    </tr>
+    <tr>
+      <td>MonthClaimed_May</td>
+      <td>0.027605</td>
+    </tr>
+    <tr>
+      <td>Make_Accura</td>
+      <td>0.025451</td>
+    </tr>
+    <tr>
+      <td>is_external_agent</td>
+      <td>0.024701</td>
+    </tr>
+    <tr>
+      <td>AgeOfVehicle_6 years</td>
+      <td>0.023979</td>
+    </tr>
+    <tr>
+      <td>DayOfWeekClaimed_Tuesday</td>
+      <td>0.023711</td>
+    </tr>
+    <tr>
+      <td>DayOfWeek_Tuesday</td>
+      <td>0.023456</td>
+    </tr>
+    <tr>
+      <td>MonthClaimed_Dec</td>
+      <td>0.022359</td>
+    </tr>
+    <tr>
+      <td>DayOfWeek_Sunday</td>
+      <td>0.022103</td>
+    </tr>
+    <tr>
+      <td>Make_Honda</td>
+      <td>0.021847</td>
+    </tr>
+    <tr>
+      <td>DayOfWeekClaimed_Wednesday</td>
+      <td>0.021529</td>
+    </tr>
+    <tr>
+      <td>AgeOfVehicle_5 years</td>
+      <td>0.020764</td>
+    </tr>
+    <tr>
+      <td>MonthClaimed_Jul</td>
+      <td>0.020373</td>
+    </tr>
+    <tr>
+      <td>Month_Sep</td>
+      <td>0.019800</td>
+    </tr>
+    <tr>
+      <td>has_more_than_4_past_claims</td>
+      <td>0.019651</td>
+    </tr>
+    <tr>
+      <td>AgeOfPolicyHolder_51 to 65</td>
+      <td>0.019234</td>
+    </tr>
+    <tr>
+      <td>MonthClaimed_Feb</td>
+      <td>0.018918</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    </html>
+    
